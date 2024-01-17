@@ -1,0 +1,14 @@
+name: CICD
+
+on:
+  push:
+    branches: [cicd-docker]
+
+jobs:
+  build:
+    steps:
+      - name: checking out source code
+        uses: actions/checkout@v3
+      - name: login into dockerhub
+        run: docker login -u username -p password
+

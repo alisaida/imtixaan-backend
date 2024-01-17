@@ -1,0 +1,194 @@
+[
+  {
+    "questionId": 8011,
+    "question": "Who was the first Governor of the colony of New South Wales?",
+    "topic": "australia_its_people",
+    "question_so": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New South Wales?",
+    "question_so_accent": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New Sowth Wayls?",
+    "imageUri": null,
+    "soundUri": "./audio/3d4ba21e-d653-49e0-90d4-063873618bdd_en_question.mp3",
+    "soundUri_so": "./audio/79361718-b6b0-4b1c-a89c-59cace382ab5_so_question.mp3",
+    "isValue": false,
+    "createdAt": "2024-01-13T10:44:47.519Z",
+    "updatedAt": null,
+    "options": [
+      {
+        "optionId": 4041,
+        "optionText": "Captain James Cook",
+        "optionText_so": "Captain James Cook",
+        "optionText_so_accent": "kaptan jayms kuuk",
+        "soundUri": "./audio/266e3e6d-3334-446a-8a40-12887713a35e_en_option.mp3",
+        "soundUri_so": "./audio/20543124-3cc6-40a0-8a30-7930364259ca_so_option.mp3"
+      },
+      {
+        "optionId": 4059,
+        "optionText": "Native animals",
+        "optionText_so": "Xayawaanka u dhashay australia",
+        "optionText_so_accent": "Xayawaanka u dhashay australia",
+        "soundUri": "./audio/362fdef9-5341-4dab-9304-3201eda3330e_en_option.mp3",
+        "soundUri_so": "./audio/eb8fcf5a-187d-4965-be95-f64470dac3fd_so_option.mp3"
+      },
+      {
+        "optionId": 4239,
+        "optionText": "To enforce laws",
+        "optionText_so": "Si loo dhaqan geliyo sharciyada",
+        "optionText_so_accent": "Si loo dhaqan geliyo sharciyada",
+        "soundUri": "./audio/49c48c8c-b241-4432-8787-a175e1f7ddb8_en_option.mp3",
+        "soundUri_so": "./audio/651b1b79-b5d5-45ec-82fb-cce301bb731e_so_option.mp3"
+      },
+      {
+        "optionId": 4255,
+        "optionText": "British colonization",
+        "optionText_so": "Gumaysiga British",
+        "optionText_so_accent": "Gumaysiga British",
+        "soundUri": "./audio/3f2f2dd3-06a2-4039-8b75-79d4c1680519_en_option.mp3",
+        "soundUri_so": "./audio/7b6fbbbb-72f9-48b8-a080-a64cbbfd2760_so_option.mp3"
+      }
+    ],
+    "correctOptionId": 4042
+  },
+  {
+    "questionId": 8012,
+    "question": "Who was the first Governor of the colony of New South Wales?",
+    "topic": "australia_its_people",
+    "question_so": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New South Wales?",
+    "question_so_accent": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New Sowth Wayls?",
+    "imageUri": null,
+    "soundUri": "./audio/2f2d0a23-48f3-48bd-83e9-7616ad2c4caf_en_question.mp3",
+    "soundUri_so": "./audio/db59ef42-84cc-4c50-a9a7-f5df3ebf485c_so_question.mp3",
+    "isValue": false,
+    "createdAt": "2024-01-13T10:44:47.519Z",
+    "updatedAt": null,
+    "options": [
+      {
+        "optionId": 4261,
+        "optionText": "By a majority vote in the House of Representatives",
+        "optionText_so": "Cod aqlabiyad ah oo dowladda hoose ah",
+        "optionText_so_accent": "Cod aqlabiyad ah oo dowladda hoose ah",
+        "soundUri": "./audio/afcc5ac5-8ff2-4d3b-85d9-9a9c27bbc769_en_option.mp3",
+        "soundUri_so": "./audio/0ab818cf-f46b-4863-a9ca-d8fda9c4c17e_so_option.mp3"
+      },
+      {
+        "optionId": 4275,
+        "optionText": "King of Australia",
+        "optionText_so": "Boqoraka Australia",
+        "optionText_so_accent": "Boqoraka Australia",
+        "soundUri": "./audio/0272a2d3-2f1b-429a-ba89-968441231306_en_option.mp3",
+        "soundUri_so": "./audio/fddf6cec-57d8-46ac-8c94-09d617e49713_so_option.mp3"
+      },
+      {
+        "optionId": 4298,
+        "optionText": "Counting votes",
+        "optionText_so": "Tirinta codadka",
+        "optionText_so_accent": "Tirinta codadka",
+        "soundUri": "./audio/8303f65d-77fa-472f-a43a-a06ac8f19640_en_option.mp3",
+        "soundUri_so": "./audio/1538f16a-6f92-44c6-b545-7b6447e91c51_so_option.mp3"
+      },
+      {
+        "optionId": 4352,
+        "optionText": "Police officers",
+        "optionText_so": "Booliska",
+        "optionText_so_accent": "Booliska",
+        "soundUri": "./audio/1e7f6104-1ce2-4ddb-9df0-0003d7d793c4_en_option.mp3",
+        "soundUri_so": "./audio/76c5e363-a90a-45e7-aa75-f65f43d8bdd9_so_option.mp3"
+      }
+    ],
+    "correctOptionId": 4042
+  },
+  {
+    "questionId": 8013,
+    "question": "Who was the first Governor of the colony of New South Wales?",
+    "topic": "australia_its_people",
+    "question_so": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New South Wales?",
+    "question_so_accent": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New Sowth Wayls?",
+    "imageUri": null,
+    "soundUri": "./audio/68290306-edca-49ae-ae91-149453ae7df3_en_question.mp3",
+    "soundUri_so": "./audio/e2601bb2-c054-49c7-bacd-5456595a6e21_so_question.mp3",
+    "isValue": false,
+    "createdAt": "2024-01-13T10:44:47.519Z",
+    "updatedAt": null,
+    "options": [
+      {
+        "optionId": 4356,
+        "optionText": "Monarchy",
+        "optionText_so": "Boqortooyada",
+        "optionText_so_accent": "Boqortooyada",
+        "soundUri": "./audio/ba83e82e-930d-4429-8f72-1072ec344804_en_option.mp3",
+        "soundUri_so": "./audio/aafa841d-7a94-4497-ba21-935520408976_so_option.mp3"
+      },
+      {
+        "optionId": 4384,
+        "optionText": "Exemption from responsibilities",
+        "optionText_so": "Xil ka dhaafid",
+        "optionText_so_accent": "Xil ka dhaafid",
+        "soundUri": "./audio/2ae64b9b-204e-4d5d-8c04-1a783f2eab3c_en_option.mp3",
+        "soundUri_so": "./audio/bc9b0128-6d85-4cc0-a861-ce10bc748b4b_so_option.mp3"
+      },
+      {
+        "optionId": 4387,
+        "optionText": "Promoting dependency",
+        "optionText_so": "Horumarinta ku tiirsanaanta",
+        "optionText_so_accent": "Horumarinta ku tiirsanaanta",
+        "soundUri": "./audio/c23a251d-e07e-41d7-872a-bfe1c0f6a2c1_en_option.mp3",
+        "soundUri_so": "./audio/f9c96f83-fa28-4041-a26d-bc6773449c84_so_option.mp3"
+      },
+      {
+        "optionId": 4388,
+        "optionText": "Selective assistance based on criteria",
+        "optionText_so": "Kaalmada xulashada ee ku salaysan shuruudaha",
+        "optionText_so_accent": "Kaalmada xulashada ee ku salaysan shuruudaha",
+        "soundUri": "./audio/31f5b75e-06e8-434c-a358-6bf456c1097d_en_option.mp3",
+        "soundUri_so": "./audio/3c4f66d7-c97d-4dc8-a385-0574ce9ba887_so_option.mp3"
+      }
+    ],
+    "correctOptionId": 4042
+  },
+  {
+    "questionId": 8014,
+    "question": "Who was the first Governor of the colony of New South Wales?",
+    "topic": "australia_its_people",
+    "question_so": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New South Wales?",
+    "question_so_accent": "Yuu ahaa Gudoomiyihii ugu horeeyay ee gumeysigii New Sowth Wayls?",
+    "imageUri": null,
+    "soundUri": "./audio/e13ba6d3-132a-404f-9019-c0215f50443e_en_question.mp3",
+    "soundUri_so": "./audio/01b9a5c4-61a0-4f37-af68-8a9c0a82ff7f_so_question.mp3",
+    "isValue": false,
+    "createdAt": "2024-01-13T10:44:47.519Z",
+    "updatedAt": null,
+    "options": [
+      {
+        "optionId": 4391,
+        "optionText": "Economic participation and social cohesion",
+        "optionText_so": "Ka qaybgalka dhaqaalaha iyo isdhexgalka bulshada",
+        "optionText_so_accent": "Ka qaybgalka dhaqaalaha iyo isdhexgalka bulshada",
+        "soundUri": "./audio/95fab2c9-042d-42e1-ada0-b30855ff81e2_en_option.mp3",
+        "soundUri_so": "./audio/dc8f44ce-fe95-47e7-b818-093cc29d8166_so_option.mp3"
+      },
+      {
+        "optionId": 4393,
+        "optionText": "Ignore suspicious activities",
+        "optionText_so": "Iska daa dhaqdhaqaaqyada laga shakiyo",
+        "optionText_so_accent": "Iska daa dhaqdhaqaaqyada laga shakiyo",
+        "soundUri": "./audio/c151fe4a-fc2b-441d-8f01-18815d24be81_en_option.mp3",
+        "soundUri_so": "./audio/c71533da-6b82-49c5-b870-9ed40a7e52b0_so_option.mp3"
+      },
+      {
+        "optionId": 4404,
+        "optionText": "Loyalty to the government, not the people",
+        "optionText_so": "Daacadnimada dawladda, maaha dadka",
+        "optionText_so_accent": "Daacadnimada dawladda, maaha dadka",
+        "soundUri": "./audio/9058f142-8404-42b0-9c3a-483faa01c690_en_option.mp3",
+        "soundUri_so": "./audio/8d8a38f5-10ac-4dc8-8bb5-4ea525708c40_so_option.mp3"
+      },
+      {
+        "optionId": 4388,
+        "optionText": "Selective assistance based on criteria",
+        "optionText_so": "Selective assistance based on criteria",
+        "optionText_so_accent": "Selective assistance based on criteria",
+        "soundUri": "./audio/179a6951-9ccd-4319-8a27-f3cc5ae0a4b8_en_option.mp3",
+        "soundUri_so": "./audio/d7e2e79d-ccd1-4f7a-b7e4-a9ea22c94a3b_so_option.mp3"
+      }
+    ],
+    "correctOptionId": 4042
+  }
+]
