@@ -38,7 +38,7 @@ const transformQuestions = (questionsData) => {
     });
 
     // Save the transformed data to a JSON file
-    const filePath = './data/transformedQuestions.json';
+    const filePath = './tmp/transformedQuestions.json';
     fs.writeFileSync(filePath, JSON.stringify(transformedData, null, 2));
 
     console.log(`Transformed data saved to: ${filePath}`);

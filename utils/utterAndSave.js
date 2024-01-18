@@ -156,7 +156,7 @@ const utterAndSave = async (questionsData) => {
         const validUtteredData = utteredData.filter(Boolean);
 
         // Save the uttered data to a JSON file
-        const utteredFilePath = `./data/utteredQuestions_batch${batchIndex + 1}.json`;
+        const utteredFilePath = `./tmp/utteredQuestions_batch${batchIndex + 1}.json`;
         fs.writeFileSync(utteredFilePath, JSON.stringify(validUtteredData, null, 2));
 
         console.log(`Uttered data for batch ${batchIndex + 1} saved to: ${utteredFilePath}`);

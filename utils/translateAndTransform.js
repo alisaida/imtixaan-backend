@@ -6,9 +6,9 @@ import { uuid } from 'uuidv4';
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const translateAndTransform = async (questionsData) => {
-    const key = '2629ce678dc1480bba7d2617c1dd1584'; // Replace with your actual key
-    const endpoint = 'https://api.cognitive.microsofttranslator.com';
-    const location = 'eastus'; // Replace with your actual location
+    const key = process.env.AZURE_TRANSLATION_SERVICE_KEY;
+    const endpoint = process.env.AZURE_TRANSLATION_SERVICE_END_POINT;
+    const location = process.env.AZURE_REGION;
 
     const params = new URLSearchParams();
     params.append('api-version', '3.0');
@@ -16,7 +16,7 @@ const translateAndTransform = async (questionsData) => {
     params.append('to', 'so'); // Change 'so' to the target language code
 
     // Save the intermediate translated data to a JSON file
-    const intermediateFilePath = './data/translatedQuestionsIntermediate.json';
+    const intermediateFilePath = './tmp/translatedQuestionsIntermediate.json';
     fs.writeFileSync(intermediateFilePath, JSON.stringify(questionsData, null, 2));
 
     console.log(`Intermediate translated data saved to: ${intermediateFilePath}`);
