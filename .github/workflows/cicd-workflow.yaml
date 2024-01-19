@@ -6,9 +6,26 @@ on:
 
 jobs:
   build:
+    runs-on: [ubuntu-latest]
     steps:
       - name: checking out source code
         uses: actions/checkout@v3
       - name: login into dockerhub
-        run: docker login -u username -p password
+        run: docker login -u ${{secrets.USERNAME}} -p ${{secrets.PASSWORD}}
+      - name: Build docker image
+        run: docker build -t si3iid/imtixaan-backend .
+      - name: publish image to dockerhub
+        run: docker push si3iid/imtixaan-backend:latest
+
+  
+  deploy:
+      needs: build
+      runs-on: [aws-ec2]
+      steps:
+        - name: pull image from docker
+          run: docker pull si3iid/imtixaan-backend:latest
+        - name: deleteing old container
+          run: docker rm -f imtixaan-backend-container
+        - name: run docker container
+          run: docker run -d -p 5000:5000 -name imtixaan-backend-container si3iid/imtixaan-backend
 
