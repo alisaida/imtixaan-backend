@@ -16,6 +16,14 @@ const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_URI = process.env.DB_URI;
 
+console.log(`NODE_ENV: ${NODE_ENV}`);
+console.log(`SERVICE_NAME: ${SERVICE_NAME}`);
+console.log(`PORT: ${PORT}`);
+console.log(`DB_NAME: ${DB_NAME}`);
+console.log(`DB_USER: ${DB_USER}`);
+console.log(`DB_PASSWORD: ${DB_PASSWORD}`);
+console.log(`DB_URI: ${DB_URI}`);
+
 const dbConnectionUrl = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URI}/${DB_NAME}?retryWrites=true&w=majority`;
 
 const app = express();
@@ -25,13 +33,12 @@ app.use(morgan('dev'));
 app.use('/', questionsRouter);
 
 app.use(cors({
-    // allow requests from react 
     origin: ['http://localhost:3000']
 }));
 
 app.use(async (req, res, next) => {
     next(createError.NotFound());
-})
+});
 
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
@@ -40,13 +47,12 @@ app.use((err, req, res, next) => {
             status: err.status || 500,
             message: err.message
         }
-    })
-})
+    });
+});
 
 mongoose.connect(dbConnectionUrl, {})
     .then(() => app.listen(PORT, () => {
         console.log(`${SERVICE_NAME}.${NODE_ENV} running on http://localhost:${PORT}`);
         console.log(`database connection successful: ${dbConnectionUrl}`);
     }))
-    .catch((error) => console.log(`${error} failed to connect to database`));
-
+    .catch((error) => console.log(`${error} failed to connect to the database`));

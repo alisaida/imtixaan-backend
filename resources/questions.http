@@ -12,3 +12,13 @@ GET http://localhost:4000/api/questions/65a79ebc27837359dc90f5a2
 content-type: application/json
 
 
+### getQuestions
+GET http://ec2-3-27-107-74.ap-southeast-2.compute.amazonaws.com:4000/api/questions
+content-type: application/json
+
+
+### getQuestion
+GET http://localhost:4000/api/questions/65a79ebc27837359dc90f5a2
+content-type: application/json
+
+

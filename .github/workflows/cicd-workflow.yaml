@@ -7,25 +7,59 @@ on:
 jobs:
   build:
     runs-on: [ubuntu-latest]
+    env:
+      DOCKER_IMAGE_NAME: si3iid/imtixaan-backend
+      DOCKER_IMAGE_TAG: latest
+      DOCKER_IMAGE: $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+
     steps:
-      - name: checking out source code
-        uses: actions/checkout@v3
-      - name: login into dockerhub
+      - name: Check-out source code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build docker image
-        run: docker build -t si3iid/imtixaan-backend .
-      - name: publish image to dockerhub
-        run: docker push si3iid/imtixaan-backend:latest
 
-  
+      - name: Build and Push Docker image
+        run: |
+          DOCKER_IMAGE=$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+          docker build -t $DOCKER_IMAGE --build-arg DB_NAME=$DB_NAME --build-arg DB_USER=$DB_USER --build-arg DB_PASSWORD=$DB_PASSWORD --build-arg DB_URI=$DB_URI --build-arg NODE_ENV=$NODE_ENV --build-arg SERVICE_NAME=$SERVICE_NAME --build-arg PORT=$PORT .
+          docker push $DOCKER_IMAGE
+
   deploy:
-      needs: build
-      runs-on: [aws-ec2]
-      steps:
-        - name: pull image from docker
-          run: docker pull si3iid/imtixaan-backend:latest
-        - name: deleteing old container
-          run: docker rm -f imtixaan-backend-container
-        - name: run docker container
-          run: docker run -d -p 5000:5000 -name imtixaan-backend-container si3iid/imtixaan-backend
+    needs: build
+    runs-on: [aws-ec2]
+    env:
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_URI: ${{ secrets.DB_URI }}
+      PORT: 4000
+      NODE_ENV: dev
+      SERVICE_NAME: question-service
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/imtixaan-backend
+      DOCKER_IMAGE_TAG: latest
 
+    steps:
+      - name: Debug GitHub Secrets
+        run: |
+          echo "DB_NAME: $DB_NAME"
+          echo "DB_USER: $DB_USER"
+          echo "DB_PASSWORD: $DB_PASSWORD"
+          echo "DB_URI: $DB_URI"
+          echo "PORT: $PORT"
+          echo "NODE_ENV: $NODE_ENV"
+          echo "SERVICE_NAME: $SERVICE_NAME"
+
+      - name: Pull and Run Docker container
+        run: |
+          docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+          docker rm -f imtixaan-backend-container || true
+          docker run -d -p $PORT:4000 \
+            -e DB_NAME=$DB_NAME \
+            -e DB_USER=$DB_USER \
+            -e DB_PASSWORD=$DB_PASSWORD \
+            -e DB_URI=$DB_URI \
+            -e NODE_ENV=$NODE_ENV \
+            -e SERVICE_NAME=$SERVICE_NAME \
+            -e PORT=$PORT \
+            --name imtixaan-backend-container $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
