@@ -46,6 +46,28 @@ export const getQuestionById = async (req, res, next) => {
     }
 };
 
+export const getQuestionIdsForQuiz = async (req, res, next) => {
+    const topics = ['australia_its_people', 'democratic_beliefs', 'government_and_law', 'values'];
+
+    try {
+        // Fetch 5 random questions for each topic
+        const randomQuestions = await Promise.all(
+            topics.map(async (topic) => {
+                const topicQuestions = await Question.aggregate([
+                    { $match: { topic: topic } },
+                    { $sample: { size: 5 } },
+                    { $project: { _id: 1 } }, // Only include the _id field
+                ]);
+                return topicQuestions;
+            })
+        );
+        const flattenedQuestionIds = randomQuestions.flat().map(question => question._id);
+        res.status(200).json(flattenedQuestionIds);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+};
 
 
 
