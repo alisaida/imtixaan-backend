@@ -24,9 +24,9 @@ jobs:
     - run: npm ci
     - run: |
         touch .env
-        echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
-        echo "SERVICE_NAME=${{ secrets.SERVICE_NAME }}" >> .env
-        echo "PORT=${{ secrets.PORT }}" >> .env
+        echo "NODE_ENV=prod" >> .env
+        echo "SERVICE_NAME=question-service" >> .env
+        echo "PORT=4000" >> .env
         echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
         echo "DB_USER=${{ secrets.DB_USER }}" >> .env
         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
