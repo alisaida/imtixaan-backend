@@ -1,65 +1,34 @@
-name: CICD
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: [ubuntu-latest]
-    env:
-      DOCKER_IMAGE_NAME: si3iid/imtixaan-backend
-      DOCKER_IMAGE_TAG: latest
-      DOCKER_IMAGE: $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-      - name: Check-out source code
-        uses: actions/checkout@v2
-
-      - name: Log in to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and Push Docker image
-        run: |
-          DOCKER_IMAGE=$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-          docker build -t $DOCKER_IMAGE --build-arg DB_NAME=$DB_NAME --build-arg DB_USER=$DB_USER --build-arg DB_PASSWORD=$DB_PASSWORD --build-arg DB_URI=$DB_URI --build-arg NODE_ENV=$NODE_ENV --build-arg SERVICE_NAME=$SERVICE_NAME --build-arg PORT=$PORT .
-          docker push $DOCKER_IMAGE
-
-  deploy:
-    needs: build
-    runs-on: [aws-ec2]
-    env:
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      DB_URI: ${{ secrets.DB_URI }}
-      PORT: 4000
-      NODE_ENV: dev
-      SERVICE_NAME: question-service
-      DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/imtixaan-backend
-      DOCKER_IMAGE_TAG: latest
-
-    steps:
-      - name: Debug GitHub Secrets
-        run: |
-          echo "DB_NAME: $DB_NAME"
-          echo "DB_USER: $DB_USER"
-          echo "DB_PASSWORD: $DB_PASSWORD"
-          echo "DB_URI: $DB_URI"
-          echo "PORT: $PORT"
-          echo "NODE_ENV: $NODE_ENV"
-          echo "SERVICE_NAME: $SERVICE_NAME"
-
-      - name: Pull and Run Docker container
-        run: |
-          docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-          docker rm -f imtixaan-backend-container || true
-          docker run -d -p $PORT:4000 \
-            -e DB_NAME=$DB_NAME \
-            -e DB_USER=$DB_USER \
-            -e DB_PASSWORD=$DB_PASSWORD \
-            -e DB_URI=$DB_URI \
-            -e NODE_ENV=$NODE_ENV \
-            -e SERVICE_NAME=$SERVICE_NAME \
-            -e PORT=$PORT \
-            --name imtixaan-backend-container $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: |
+        touch .env
+        echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
+        echo "SERVICE_NAME=${{ secrets.SERVICE_NAME }}" >> .env
+        echo "PORT=${{ secrets.PORT }}" >> .env
+        echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+        echo "DB_USER=${{ secrets.DB_USER }}" >> .env
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+        echo "DB_URI=${{ secrets.DB_URI }}" >> .env
+    - run: pm2 restart BackendAPI
