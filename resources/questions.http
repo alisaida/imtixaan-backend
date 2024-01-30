@@ -1,24 +1,23 @@
-### homepage
-GET http://localhost:4000/
-content-type: application/json
-
-### getQuestions
+### get questions
 GET http://localhost:4000/api/questions
 content-type: application/json
 
+### get questions v2
+GET http://localhost:4000/api/questionsV2
+content-type: application/json
 
-### getQuestion
+### get question by id
 GET http://localhost:4000/api/questions/65a79ebc27837359dc90f5a2
 content-type: application/json
 
-
-### getQuestions
-GET http://ec2-3-27-107-74.ap-southeast-2.compute.amazonaws.com:4000/api/questions
+### get questions v2
+GET https://imtixaan.saida.dev/api/questions
 content-type: application/json
 
-
-### getQuestion
-GET http://localhost:4000/api/questions/65a79ebc27837359dc90f5a2
+### get questions v2
+GET https://imtixaan.saida.dev/api/questionsV2
 content-type: application/json
 
-
+### get question by id
+GET https://imtixaan.saida.dev/api/questions/65a886b128555e8cd4bf6b4b
+content-type: application/json

@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import createError from 'http-errors';
 import morgan from 'morgan';
-
+import { limiter } from './utils/rateLimitter.js';
 import questionsRouter from './routes/questions.js';
 
 dotenv.config({ path: 'dev.env' });
@@ -27,6 +27,7 @@ console.log(`DB_URI: ${DB_URI}`);
 const dbConnectionUrl = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URI}/${DB_NAME}?retryWrites=true&w=majority`;
 
 const app = express();
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
