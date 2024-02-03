@@ -4,10 +4,13 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import createError from 'http-errors';
 import morgan from 'morgan';
+
 import { limiter } from './utils/rateLimitter.js';
+import redisClient from './utils/redis-client.js';
 import questionsRouter from './routes/questions.js';
 
 dotenv.config({ path: 'dev.env' });
+
 const NODE_ENV = process.env.NODE_ENV;
 const SERVICE_NAME = process.env.SERVICE_NAME;
 const PORT = process.env.PORT;
@@ -21,7 +24,7 @@ console.log(`SERVICE_NAME: ${SERVICE_NAME}`);
 console.log(`PORT: ${PORT}`);
 console.log(`DB_NAME: ${DB_NAME}`);
 console.log(`DB_USER: ${DB_USER}`);
-console.log(`DB_PASSWORD: ${DB_PASSWORD}`);
+console.log(`DB_PASSWORD: *******`);
 console.log(`DB_URI: ${DB_URI}`);
 
 const dbConnectionUrl = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URI}/${DB_NAME}?retryWrites=true&w=majority`;
@@ -48,6 +51,8 @@ app.use((err, req, res, next) => {
         }
     });
 });
+
+await redisClient.connect();
 
 mongoose.connect(dbConnectionUrl, {})
     .then(() => app.listen(PORT, () => {
