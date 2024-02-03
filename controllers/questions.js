@@ -52,8 +52,14 @@ export const getQuestionIdsForQuiz = async (req, res, next) => {
     }
 };
 
+
 export const getQuestionById = async (req, res, next) => {
     const questionId = req.params.id;
+
+    // Check if questionId is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(questionId)) {
+        return res.status(404).json({ message: 'Question Id not found' });
+    }
 
     try {
         let question = await redisClient.get(questionId);
@@ -82,4 +88,3 @@ export const getQuestionById = async (req, res, next) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
-
