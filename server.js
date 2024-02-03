@@ -9,7 +9,7 @@ import { limiter } from './utils/rateLimitter.js';
 import redisClient from './utils/redis-client.js';
 import questionsRouter from './routes/questions.js';
 
-dotenv.config({ path: 'dev.env' });
+dotenv.config({ path: '.env' });
 
 const NODE_ENV = process.env.NODE_ENV;
 const SERVICE_NAME = process.env.SERVICE_NAME;
