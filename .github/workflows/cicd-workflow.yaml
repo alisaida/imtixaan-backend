@@ -27,8 +27,10 @@ jobs:
         echo "NODE_ENV=prod" >> .env
         echo "SERVICE_NAME=question-service" >> .env
         echo "PORT=4000" >> .env
+        echo "REDIS_HOST=localhost" >> .env
+        echo "REDIS_PORT=6379" >> .env
         echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
         echo "DB_USER=${{ secrets.DB_USER }}" >> .env
         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
         echo "DB_URI=${{ secrets.DB_URI }}" >> .env
-    - run: sudo pm2 start imtixaan-service
+    - run: pm2 start imtixaan-service
